@@ -1,0 +1,9 @@
+streamlit
+torch
+ultralytics
+numpy
+opencv-python
+pillow
+folium
+streamlit-folium
+streamlit_option_menu
