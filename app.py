@@ -1,9 +1,6 @@
 import streamlit as st
 import cv2
 import tempfile
-import numpy as np
-import torch
-from PIL import Image
 from ultralytics import YOLO
 from streamlit_option_menu import option_menu
 import folium
