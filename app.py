@@ -11,7 +11,7 @@ from streamlit_folium import folium_static
 
 
 # Konfigurasi halaman
-st.set_page_config(page_title="YOLOv12 Object Detection", layout="wide")
+st.set_page_config(page_title="Canebuddy", layout="wide")
 
 # Navigasi sidebar
 with st.sidebar:
