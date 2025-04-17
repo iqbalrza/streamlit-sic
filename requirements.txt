@@ -1,5 +1,11 @@
 streamlit
+<<<<<<< HEAD:requirements.txt
 opencv-python-headless>=4.5.5.64
+=======
+opencv-python
+opencv-python-headless>=4.5.5.64 
+numpy
+>>>>>>> 1c3f87bbc90daea16e038a91e328f3eb0a1c01bd:requirement.txt
 torch
 ultralytics
 streamlit-option-menu
