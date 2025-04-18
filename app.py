@@ -6,31 +6,29 @@ from streamlit_option_menu import option_menu
 import folium
 from streamlit_folium import folium_static
 import numpy as np 
-# from openai import OpenAI
-
-# Fungsi untuk generate deskripsi lokasi dengan AI
-# def generate_location_description(nama, lat, lon, context):
-#     client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+import openai
+   
+def generate_location_description(nama, lat, lon, context):
+    prompt = f"""
+    Berikan penjelasan tentang lokasi {nama} dengan koordinat latitude {lat} dan longitude {lon}. 
+    Jelaskan dalam konteks {context}. Berikan informasi mengenai:
+    1. Posisi geografis (wilayah, kota)
+    2. Karakteristik area sekitar (permukiman, komersial, dll)
+    3. Landmark penting di sekitarnya
+    4. Aksesibilitas untuk penyandang disabilitas
+    Gunakan bahasa yang deskriptif namun mudah dipahami.
+    """
     
-#     prompt = f"""
-#     Berikan penjelasan tentang lokasi {nama} dengan koordinat latitude {lat} dan longitude {lon}. 
-#     Jelaskan dalam konteks {context}. Berikan informasi mengenai:
-#     1. Posisi geografis (wilayah, kota)
-#     3. Bangunan Terkenal di sekitarnya
-#     4. Aksesibilitas untuk penyandang disabilitas
-#     Gunakan bahasa yang deskriptif namun mudah dipahami dan buat dalam 1 kalimat.
-#     """
-    
-#     try:
-#         response = client.chat.completions.create(
-#             model="gpt-3.5-turbo",
-#             messages=[{"role": "user", "content": prompt}],
-#             temperature=0.7,
-#             max_tokens=150
-#         )
-#         return response.choices[0].message.content.strip()
-#     except Exception as e:
-#         return f"Gagal menghasilkan deskripsi: {str(e)}"
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=150
+        )
+        return response.choices[0].message['content'].strip()
+    except Exception as e:
+        return f"Gagal menghasilkan deskripsi: {str(e)}"
 
 # Konfigurasi halaman
 st.set_page_config(page_title="Canebuddy", layout="wide")
