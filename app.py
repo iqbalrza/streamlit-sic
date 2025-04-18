@@ -6,26 +6,27 @@ from streamlit_option_menu import option_menu
 import folium
 from streamlit_folium import folium_static
 import numpy as np 
-import openai
+from openai import OpenAI
 
 # Fungsi untuk generate deskripsi lokasi dengan AI
 def generate_location_description(nama, lat, lon, context):
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    
     prompt = f"""
     Berikan penjelasan tentang lokasi {nama} dengan koordinat latitude {lat} dan longitude {lon}. 
     Jelaskan dalam konteks {context}. Berikan informasi mengenai:
     1. Posisi geografis (wilayah, kota)
-    2. Landmark penting di sekitarnya
     Gunakan bahasa yang deskriptif namun mudah dipahami.
     """
     
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
             max_tokens=150
         )
-        return response.choices[0].message['content'].strip()
+        return response.choices[0].message.content.strip()
     except Exception as e:
         return f"Gagal menghasilkan deskripsi: {str(e)}"
 
