@@ -6,6 +6,7 @@ from streamlit_option_menu import option_menu
 import folium
 from streamlit_folium import folium_static
 import numpy as np 
+import openai
 
 # Fungsi untuk generate deskripsi lokasi dengan AI
 def generate_location_description(nama, lat, lon, context):
