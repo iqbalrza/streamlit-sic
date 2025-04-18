@@ -13,9 +13,8 @@ def generate_location_description(nama, lat, lon, context):
     Berikan penjelasan tentang lokasi {nama} dengan koordinat latitude {lat} dan longitude {lon}. 
     Jelaskan dalam konteks {context}. Berikan informasi mengenai:
     1. Posisi geografis (wilayah, kota)
-    2. Karakteristik area sekitar (permukiman, komersial, dll)
-    3. Landmark penting di sekitarnya
-    4. Aksesibilitas untuk penyandang disabilitas
+    2. Bangunan Terkenal di sekitarnya
+    3. Aksesibilitas untuk penyandang disabilitas
     Gunakan bahasa yang deskriptif namun mudah dipahami.
     """
     
